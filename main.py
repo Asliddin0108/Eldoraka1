@@ -8,18 +8,10 @@ import re, os, traceback, tempfile
 # ✅ API ma'lumotlari (o'zingizniki)
 api_id = 20439154
 api_hash = "3125ce8355eebd911e56d564d643bb64"
-client = TelegramClient(
-    "bot1_openA",
-    api_id,
-    api_hash,
-    flood_sleep_threshold=0,
-    sequential_updates=False
-)
+client = TelegramClient("bot1_openA", api_id, api_hash)
 
-# 🛡 Railway uchun instance nazorati (Windows + Linux universal)
-temp_dir = tempfile.gettempdir()
-lock_path = os.path.join(temp_dir, f"bot_{os.environ.get('RAILWAY_INSTANCE', 'local')}.lock")
-
+# 🛡 Railway uchun instance nazorati
+lock_path = os.path.join(tempfile.gettempdir(), "bot.lock")
 if os.environ.get("RAILWAY_INSTANCE") and os.path.exists(lock_path):
     print("❌ Oldingi instance ishlayapti, chiqyapti...")
     raise SystemExit(0)
@@ -143,80 +135,6 @@ SOURCE_CHAT_IDS = [
     -1001579371989,
     -1002450441158,
     -1002247127057,
-    -1001151786413,
-    -1001167779790,
-    -1001174129219,
-    -1001211288673,
-    -1001292674273,
-    -1001389959266,
-    -1001408708197,
-    -1001436571502,
-    -1001449255554,
-    -1001463428540,
-    -1001478722034,
-    -1001488002341,
-    -1001543754946,
-    -1001550445906,
-    -1001551779296,
-    -1001579265984,
-    -1001592648081,
-    -1001613654341,
-    -1001616839980,
-    -1001644580852,
-    -1001651498858,
-    -1001663936622,
-    -1001708221879,
-    -1001761114406,
-    -1001769199037,
-    -1001771372940,
-    -1001773882132,
-    -1001798390420,
-    -1001811533352,
-    -1001820289368,
-    -1001832434183,
-    -1001835606840,
-    -1001838376696,
-    -1001840529817,
-    -1001840672748,
-    -1001891255511,
-    -1001899581243,
-    -1001914338900,
-    -1001919108125,
-    -1001930379977,
-    -1001947135679,
-    -1001973570920,
-    -1001975272644,
-    -1001979537831,
-    -1001993404465,
-    -1002000321420,
-    -1002001903393,
-    -1002019555745,
-    -1002040780497,
-    -1002046930439,
-    -1002057187341,
-    -1002063015819,
-    -1002068926123,
-    -1002091926657,
-    -1002098313030,
-    -1002104290485,
-    -1002122461325,
-    -1002124686083,
-    -1002138837184,
-    -1002141280624,
-    -1002177587381,
-    -1002210264469,
-    -1002245881447,
-    -1002247127057,
-    -1002401185679,
-    -1002409711932,
-    -1002430039046,
-    -1002440632307,
-    -1002456210489,
-    -1002580858183,
-    -1002618722089,
-    -1002734938847,
-    -1002766681304,
-    -1003103099324,
 ]
 
 # 🔗 Guruh ID -> Link
@@ -335,82 +253,7 @@ GROUP_LINKS = {
     -1002430039046: "https://t.me/uychi_chortoq_tosh",
     -1001579371989: "https://t.me/TaxiiitoshkentUychi",
     -1002450441158: "https://t.me/chortoq_toshkentga",
-    -1001151786413: "https://t.me/Namangan_Toshkent_taxii_n1",
-    -1001167779790: "https://t.me/Namangan_toshkent_kamfort",
-    -1001174129219: "https://t.me/uychuchqorgon",
-    -1001211288673: "https://t.me/Chortoq_Yangiqurgon_Toshkent_tak",
-    -1001292674273: "https://t.me/Chortoq_Namangan_ToshkentTaksi",
-    -1001389959266: "https://t.me/NAMANGAN_TOSHKENT_TAKSI6864",
-    -1001408708197: "https://t.me/nanaytoshkent",
-    -1001436571502: "https://t.me/toshkent_uchqorgon_uychi",
-    -1001449255554: "https://t.me/qogaytaksi",
-    -1001463428540: "https://t.me/namangan_taksi",
-    -1001478722034: "https://t.me/CHORTOQ_UYCHI_TAXI",
-    -1001488002341: "https://t.me/Uychi_Toshkent_chortoq_taxi",
-    -1001543754946: "https://t.me/Toshkent_Yangiqorgon_Iskavot",
-    -1001550445906: "https://t.me/NamanganToshkentN1taxi",
-    -1001551779296: "https://t.me/sartzui",
-    -1001579265984: "https://t.me/chortoq_toshkent_yangiqorgon_t",
-    -1001592648081: "https://t.me/Toshkent_Namangan_Chortoq_Taxi",
-    -1001613654341: "https://t.me/toshkent_namangan_taksi01",
-    -1001616839980: "https://t.me/Yangiqurgon_Namangan_Toshkent",
-    -1001644580852: "https://t.me/chortoq_toshkent_taxi",
-    -1001651498858: "https://t.me/taxi_kamfort",
-    -1001663936622: "https://t.me/chortoq_toshket",
-    -1001708221879: "https://t.me/Namangan_50_060",
-    -1001761114406: "https://t.me/UYCHI_TOSHKENT_TAKSI_05",
-    -1001769199037: "https://t.me/Namangan_Toshkent_UYCHI12",
-    -1001771372940: "https://t.me/Toshkent_yangiqorgon_chortoq",
-    -1001773882132: "https://t.me/Chortoq_Toshkent_Uychi_Taksii",
-    -1001798390420: "https://t.me/toshkent_uychi",
-    -1001811533352: "https://t.me/Toshkent_Yangiqorgon_taxi",
-    -1001820289368: "https://t.me/Kalishox_toshkent_taxi",
-    -1001832434183: "https://t.me/toshkentchortoq24",
-    -1001835606840: "https://t.me/oraariq",
-    -1001838376696: "https://t.me/vodiy_toshkent_voxa",
-    -1001840529817: "https://t.me/namangan_uychi_chortoq_utoshkent",
-    -1001840672748: "https://t.me/Namanganyangikurgontaksi93",
-    -1001891255511: "https://t.me/toshkentyangikurgontaxi",
-    -1001899581243: "https://t.me/Uychi_Toshkent_taxi_24",
-    -1001914338900: "https://t.me/uychi_chortoq_namangan_toshkent1",
-    -1001919108125: "https://t.me/toshkent_vodiy_taksi_xizmati01",
-    -1001930379977: "https://t.me/taksinamangantochkent1992",
-    -1001947135679: "https://t.me/shopirlarbekobod",
-    -1001973570920: "https://t.me/uychi_chortoq_toshkent3",
-    -1001975272644: "https://t.me/namangan_toshkent_universal_taxi",
-    -1001979537831: "https://t.me/nam_tosh",
-    -1001993404465: "https://t.me/namangan_toshkent_taxi_yonalishi",
-    -1002000321420: "https://t.me/chortoq_Toshkent29",
-    -1002001903393: "https://t.me/Toshkent_Uchqorgon_UychiTaxi",
-    -1002019555745: "https://t.me/Namangan_Toshkent_Chortoq_taksi",
-    -1002040780497: "https://t.me/Chortoq_Toshkent_Namangantaxi",
-    -1002046930439: "https://t.me/Koroskon_Toshkent",
-    -1002057187341: "https://t.me/toshkent_namangan_taksi_lichniy",
-    -1002063015819: "https://t.me/ZAKAZ_BERISH_GURUH",
-    -1002068926123: "https://t.me/nanay_toshkent_taxi",
-    -1002091926657: "https://t.me/toshkent_namangan_birlashgan",
-    -1002098313030: "https://t.me/namangan_toshkent_taxiN1",
-    -1002104290485: "https://t.me/yangiqurgon_toshkent_uychi",
-    -1002122461325: "https://t.me/NAMANGAN_TOSHKENT_taki",
-    -1002124686083: "https://t.me/vodiytaksi_vodiytaxi_tezkor",
-    -1002138837184: "https://t.me/qorabog_toshkent_24_7",
-    -1002141280624: "https://t.me/uychi_toshkent_taksi1",
-    -1002177587381: "https://t.me/Namangan_uychi_Toshkent",
-    -1002210264469: "https://t.me/tezkortaxi598",
-    -1002245881447: "https://t.me/Namangan_toshkent_24_soat",
-    -1002247127057: "https://t.me/uychi_toshkent",
-    -1002401185679: "https://t.me/Uychi_toshkent1",
-    -1002409711932: "https://t.me/UYCHI_TOSHKENTNAMANGAN",
-    -1002430039046: "https://t.me/uychi_chortoq_tosh",
-    -1002440632307: "https://t.me/UychiChortoqNamanganToshkenttaxi",
-    -1002456210489: "https://t.me/uchqorgon_taxii",
-    -1002580858183: "https://t.me/TOSHKENT_BRLASHGAN_TAXI941575740",
-    -1002618722089: "https://t.me/uychi_chortoq_toshkent_2",
-    -1002734938847: "https://t.me/toshkent_namangan_taksi_tezride",
-    -1002766681304: "https://t.me/Uychi_chortoq_toshkent_247",
-    -1003103099324: "https://t.me/UchqorgonToshkent",
 }
-
 
 # ===== Normalizatsiya (emoji + translit + typo tuzatish) =====
 try:
@@ -418,13 +261,6 @@ try:
     EMOJI_AVAILABLE = True
 except Exception:
     EMOJI_AVAILABLE = False
-
-# ⚡ OPTIMIZATION: normalize_text ni cache qilish (10x tezlik)
-from functools import lru_cache
-
-@lru_cache(maxsize=2000)
-def normalize_text_cached(text: str) -> str:
-    return normalize_text(text)
 
 def normalize_text(text: str) -> str:
     if not text:
@@ -607,108 +443,48 @@ def level_4_check(text):
                 location_keywords + contact_keywords + safe_keywords)
     return any(k in text for k in keywords)
 
-# 🔍 Yakuniy tekshiruv (KUCHLI FILTER)
+# 🔍 Yakuniy tekshiruv
 def is_valid_order(text):
-
-    if not text:
-        return False
-
-    t = text  # normalize allaqachon handler ichida qilinadi
-
-    # ❌ reklama bloklash
-    if not level_1_check(t):
-        return False
-
-    # ❌ haydovchi bloklash (ENG MUHIM)
-    if not level_2_check(t):
-        return False
-
-    # ❌ juda qisqa yoki uzun
-    if not level_3_check(t):
-        return False
-
-    score = 0
-
-    # ✅ yo‘lovchi keyword
-    if level_4_check(t):
-        score += 3
-
-    # ✅ shoshilinch keyword
-    if level_6_check(t):
-        score += 2
-
-    # ✅ yo‘nalish aniqlansa
-    if extract_direction(t) != "Yo‘nalish aniqlanmadi":
-        score += 2
-
-    # ✅ telefon bor
-    if re.search(r'\d{9}', t):
-        score += 1
-
-    # minimum score
-    return score >= 3
+    t = normalize_text(text)
+    if not level_1_check(t): return False
+    if not level_2_check(t): return False
+    if not level_3_check(t): return False
+    if level_4_check(t): return True
+    if level_5_check(t) and level_6_check(t): return True
+    return False
 
 # 🧭 Maqsad guruhlar
 DEST_CHAT_IDS = [
-    -1003848159874
+    -1003577166113
 ]
 
 dest_entities = []  # faqat entity lar saqlanadi
+
+
+# 📦 Takroriy xabarlar (1 daqiqa ichida)
 recent_messages = {}
 
-# Duplicate xabarlarni hash orqali aniqlash (kuchli va tez)
-import hashlib
-
-MAX_CACHE = 1000
-
 def is_duplicate(message_text: str, user_id: int) -> bool:
-
     now = datetime.now()
-
-    normalized = normalize_text(message_text or "")
-
-    hash_text = hashlib.md5(normalized.encode()).hexdigest()
-
-    key = (user_id, hash_text)
-
+    key = (user_id, (message_text or "").strip())
     if key in recent_messages:
-        if now - recent_messages[key] < timedelta(minutes=2):
+        if now - recent_messages[key] < timedelta(minutes=1):
             return True
-
     recent_messages[key] = now
-
-    # RAM to‘lib ketmasligi uchun cache tozalash
-    if len(recent_messages) > MAX_CACHE:
-        recent_messages.clear()
-
     return False
 
-# 📨 Yangi xabarlar (ULTRA FAST HANDLER)
+
+# 📨 Yangi xabarlar
 @client.on(events.NewMessage(chats=SOURCE_CHAT_IDS))
 async def handler(event):
-
-    # handler bloklanmaydi, hamma ish pastdagi funksiyada
-    asyncio.create_task(process_message(event))
-
-
-# ⚡ ULTRA FAST message processor
-async def process_message(event):
-
     try:
-
-        # bot hali to‘liq ishga tushmagan bo‘lsa
+        # bot hali ishga tushmagan bo‘lsa
         if not dest_entities:
             return
 
-
-        sender = event.sender
-
-        if sender is None:
-            sender = await event.get_sender()
-
+        sender = await event.get_sender()
         if not sender or getattr(sender, 'bot', False):
             return
-
 
         text = (
             getattr(event.message, 'message', '') or
@@ -716,69 +492,33 @@ async def process_message(event):
             ''
         )
 
-        if not text:
+        if text and is_duplicate(text, getattr(sender, "id", 0)):
             return
-
-
-        # ⚡ tez normalize (cache bilan)
-        normalized_text = normalize_text_cached(text)
-
-
-        # duplicate tekshiruv
-        if is_duplicate(text, getattr(sender, "id", 0)):
-            return
-
 
         # 👤 Foydalanuvchi ma’lumotlari
         if isinstance(sender, User):
-
             full_name = f"{sender.first_name or ''} {sender.last_name or ''}".strip() or "Ismi yo‘q"
-
-            username_mention = (
-                f"@{sender.username}"
-                if sender.username else "Yo‘q"
-            )
-
-            profile_link = (
-                f"https://t.me/{sender.username}"
-                if sender.username else f"tg://user?id={sender.id}"
-            )
-
+            username_mention = f"@{sender.username}" if sender.username else "Yo‘q"
+            profile_link = f"https://t.me/{sender.username}" if sender.username else f"tg://user?id={sender.id}"
             account_phone = getattr(sender, 'phone', "Yopiq akkaunt")
-
         else:
-
             full_name = "Ismi yo‘q"
             username_mention = "Yo‘q"
             profile_link = "https://t.me/"
             account_phone = "Yopiq akkaunt"
 
-
-
         sana = datetime.now().strftime("%Y-%m-%d")
         vaqt = datetime.now().strftime("%H:%M")
-
-        yo_nalish = extract_direction(normalized_text)
-
+        yo_nalish = extract_direction(text or "")
         group_link = GROUP_LINKS.get(event.chat_id, "#")
-
-        group_tag = (
-            group_link.replace("https://t.me/", "@")
-            if group_link.startswith("https://t.me/")
-            else "#"
-        )
-
-
-        phones = re.findall(r'\d{9,}', normalized_text)
-
+        group_tag = group_link.replace("https://t.me/", "@") if group_link.startswith("https://t.me/") else "#"
+        phones = re.findall(r'\d{9,}', text or "")
         phone = phones[0] if phones else "Topilmadi"
-
         msg_link = f"https://t.me/c/{str(event.chat_id)[4:]}/{event.id}"
 
 
         # 🎤 Ovozli xabar
         if is_voice_message(event):
-
             if not os.path.exists("voices"):
                 os.makedirs("voices")
 
@@ -786,7 +526,6 @@ async def process_message(event):
                 event.message.media,
                 file=f"voices/{event.id}.ogg"
             )
-
 
             caption = (
                 "━━━━━━━━━━━━━━\n"
@@ -800,34 +539,24 @@ async def process_message(event):
                 "━━━━━━━━━━━━━━"
             )
 
-
-            # ⚡ parallel yuborish
-            tasks = [
-                client.send_file(
+            for ent in dest_entities:
+                await client.send_file(
                     ent,
                     file_path,
                     caption=caption,
                     parse_mode="markdown"
                 )
-                for ent in dest_entities
-            ]
-
-            await asyncio.gather(*tasks, return_exceptions=True)
-
 
             try:
                 os.remove(file_path)
-            except:
+            except Exception:
                 pass
-
             return
 
 
-
-        # 🧾 matn filtri
-        if not is_valid_order(normalized_text):
+        # 🧾 Matnli xabar filtri
+        if not is_valid_order(text or ""):
             return
-
 
         formatted = (
             "━━━━━━━━━━━━━━\n"
@@ -842,24 +571,18 @@ async def process_message(event):
             "━━━━━━━━━━━━━━"
         )
 
-
-        # ⚡ parallel yuborish
-        tasks = [
-            client.send_message(
+        # ✅ 4 ta guruhga yuborish
+        for ent in dest_entities:
+            await client.send_message(
                 ent,
                 formatted,
                 parse_mode="markdown"
             )
-            for ent in dest_entities
-        ]
-
-        await asyncio.gather(*tasks, return_exceptions=True)
-
 
     except Exception as e:
-
         print("❌ Xatolik:", e)
         traceback.print_exc()
+
 
 # ▶️ Botni ishga tushirish
 async def main():
@@ -878,8 +601,3 @@ async def main():
 if __name__ == "__main__":
     import asyncio
     asyncio.run(main())
-
-
-
-
-
