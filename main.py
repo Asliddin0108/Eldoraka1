@@ -151,7 +151,6 @@ GROUP_LINKS = {
     -1002644651561: "https://t.me/Beshariq_Toshkentt_Taxi",
     -1001586063735: "https://t.me/baliqkol_toshkent_taxi",
     -1002202414557: "https://t.me/Namangan_toshkent_07",
-    -1002287201244: "https://t.me/TAXI_CHAQIRISH",
     -1002268921510: "https://t.me/Yangiqorgon_toshket_taxsi",
     -1002463548215: "https://t.me/qoqon_taksi_toshken",
     -1001751611282: "https://t.me/POP_CHUST_SHAHARLAR_ARO_TAKSI",
